@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playfield Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #f4efe6;
+            border-bottom: 1px solid #eeeeee;
+            font-family: sans-serif;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .header-nav {
+            margin-left: auto;
+            padding: auto;
+        }
+
+        .header-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-nav li {
+            color: #333333;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .header-nav li:hover,
+        .header-nav li.active {
+            color: #000000;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ff4c25;
+            color: #ffffff;
+            border: none;
+            margin-left: 25px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e03b18;
+        }
+
+        .cta-button .arrow {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4efe6;
+            color: #2d2a26;
+            padding: 24px;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 48px;
+            }
+        }
+
+        .container {
+            max-width: 1152px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+        }
+
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #1c2d37;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+        }
+
+        .text-orange {
+            color: #ff4c25;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+            padding: 48px 0;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                text-align: left;
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #666;
+            width: max-content;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .badge {
+                margin: 0;
+            }
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #ff4c25;
+            border-radius: 50%;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #55636a;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .hero-desc {
+                margin: 0;
+            }
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .btn-group {
+                justify-content: flex-start;
+            }
+        }
+
+        .btn-primary {
+            background-color: #ff4c25;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            font-size: 14px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #e03b18;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #55636a;
+            border: 1px solid #d1d5db;
+            font-weight: 600;
+            padding: 12px 28px;
+            font-size: 14px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .stats-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: nowrap;
+            gap: 15px;
+            padding: 30px 20px;
+            background-color: #f4efe6;
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        .stat-item {
+            background-color: #f4efe6;
+            border: 1px solid #eae4d8;
+            border-radius: 12px;
+            padding: 48px 50px;
+            min-width: 220px;
+            min-height: 160px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .stat-number {
+            font-size: 38px;
+            font-weight: bold;
+            color: #1c2d37;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #77848c;
+        }
+
+        .hero-visual {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            display: block;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .trusted-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            color: #555;
+            gap: 16px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .trusted-header {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .trusted-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            font-weight: 500;
+        }
+
+        .section-padding {
+            padding: 48px 0;
+        }
+
+        .sub-title {
+            color: #d35400;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #111;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 48px;
+            }
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 56px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 640px) {
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-4 {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+
+        .step-card {
+            background-color: #f4efe6;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eae4d8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-icon {
+            background-color: #f4efe6;
+            color: #555;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .step-h3 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #111;
+            margin-bottom: 16px;
+        }
+
+        .step-p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: start;
+            padding-top: 48px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .form-section {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-info-title {
+            font-size: 36px;
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        @media (min-width: 768px) {
+            .form-info-title {
+                font-size: 48px;
+            }
+        }
+
+        .form-info-p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #575249;
+            max-width: 448px;
+        }
+
+        .bullets-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 8px;
+            font-size: 14px;
+            color: #575249;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .bullet-check {
+            color: #e0533c;
+            font-weight: bold;
+        }
+
+        .spreads-section {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            padding-top: 48px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .spreads-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .spreads-header {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+                align-items: flex-end;
+            }
+        }
+
+        .spreads-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        @media (max-width: 767px) {
+            .spreads-title-block {
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        .spreads-link-block {
+            padding-top: 8px;
+        }
+
+        .view-all-link {
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #2d2a26;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .img-card {
+            background-color: #f4efe6;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f4efe6;
+            aspect-ratio: 1.2 / 1;
+            display: flex;
+        }
+
+        .img-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: #f4efe6;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.01);
+        }
+
+        .process-section {
+            background-color: #161616;
+            color: #ffffff;
+            padding: 80px 40px;
+            font-family: 'Inter', sans-serif;
+            border-radius: 24px;
+        }
+
+        .process-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .process-tag {
+            color: #E34F32;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .process-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+        }
+
+        .process-subtitle {
+            color: #999999;
+            font-size: 1.05rem;
+            margin-bottom: 60px;
+        }
+
+        .timeline-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            margin-bottom: 60px;
+            padding: 0 10px;
+        }
+
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 40px;
+            right: 40px;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: 1;
+        }
+
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            z-index: 2;
+            padding: 0 10px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: #161616;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .timeline-step:last-child .step-number {
+            background-color: #E34F32;
+            border-color: #E34F32;
+            color: #ffffff;
+        }
+
+        .step-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: #ffffff;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: #A3A3A3;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .phase-boxes-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        @media (min-width: 768px) {
+            .phase-boxes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .phase-card {
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 35px 30px;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .phase-num {
+            color: #E34F32;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .phase-title-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            color: #ffffff;
+        }
+
+        .phase-desc-text {
+            color: #CCCCCC;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .timeline-wrapper {
+                flex-direction: column;
+                gap: 40px;
+                align-items: flex-start;
+            }
+
+            .timeline-wrapper::before {
+                display: none;
+            }
+
+            .timeline-step {
+                flex-direction: row;
+                text-align: left;
+                gap: 20px;
+            }
+
+            .step-number {
+                margin-bottom: 0;
+            }
+        }
+
+        /* Testimonial */
+        .testimonial-container {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 24px 0;
+        }
+
+        .quote-icon {
+            font-size: 60px;
+            line-height: 1;
+            color: #ff4c25;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-text {
+            font-size: 22px;
+            font-style: italic;
+            line-height: 1.5;
+            color: #2d2a26;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .testimonial-author .name {
+            font-weight: 600;
+            color: #1c2d37;
+        }
+
+        .testimonial-author .designation {
+            font-size: 13px;
+            color: #77848c;
+        }
+
+        .hero-stats-section {
+            background-color: #f4efe6;
+            padding: 60px 20px;
+            font-family: 'Inter', sans-serif;
+            border-radius: 24px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn-orange {
+            background-color: #E34F32;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 12px 28px;
+            border: 1px solid #999794;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background-color: #f4efe6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .icon-wrapper svg {
+            width: 32px;
+            height: 32px;
+            fill: none;
+            stroke: #E34F32;
+            stroke-width: 1.8;
+        }
+
+        .orange-divider {
+            width: 45px;
+            height: 2.5px;
+            background-color: #E34F32;
+            margin: 12px auto 18px auto;
+        }
+
+        /* Footer */
+        .footer-container {
+            background-color: #f4efe6;
+            color: #333;
+            padding: 60px 40px 30px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-box {
+            background-color: #6c9a81;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .logo-text-top {
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .logo-text-bottom {
+            display: block;
+            font-size: 9px;
+            opacity: 0.8;
+        }
+
+        .company-name {
+            font-size: 22px;
+            color: #2b2b2b;
+            font-weight: 500;
+        }
+
+        .location {
+            margin-bottom: 20px;
+        }
+
+        .contact-info a {
+            color: #555;
+            text-decoration: underline;
+        }
+
+        .cta-box {
+            width: 1100px;
+            max-width: 100%;
+            background: linear-gradient(135deg, #FF6A45, #E64A2E);
+            border-radius: 40px;
+            text-align: center;
+            padding: 70px 30px;
+            color: #fdf6ec;
+            margin: auto;
+        }
+
+        .cta-box h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 56px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+
+        .start-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fdf6ec;
+            color: #1a1a1a;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.03);
+        }
+
+        .footer-col h3 {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a,
+        .privacy-link,
+        .back-to-top {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover,
+        .privacy-link:hover,
+        .back-to-top:hover {
+            color: #000;
+        }
+
+        .cta-text {
+            margin-bottom: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff5a36;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #e04826;
+        }
+
+        .footer-divider {
+            border: 0;
+            border-top: 1px solid #d3cebf;
+            margin: 50px auto 20px auto;
+            max-width: 1200px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .bottom-center {
+            flex-grow: 1;
+            text-align: center;
+            padding-right: 100px;
+        }
+
+        /* Mobile Responsive Settings */
+        @media (max-width: 768px) {
+            .stats-group {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .bottom-center {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-brand">
+            <span class="brand-name">Playfield <strong>Books</strong></span>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li class="active">Home</li>
+                <li>How It Works</li>
+                <li>Projects</li>
+                <li>About Us</li>
+                <li>Contact Us</li>
+            </ul>
+        </nav>
+        <div class="header-action">
+            <button class="cta-button">
+                Start your book
+                <span class="arrow">↗</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="grid-2">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span> Bulk pricing from $3.75/book
+                </div>
+                <h1 class="hero-title">
+                    Custom board books <br> for <span class="text-orange">growing brands</span>.
+                </h1>
+                <p class="hero-desc">
+                    From first sketch to final delivery, we craft story-driven board books for brands, creators, and
+                    entrepreneurs — built to be played with, kept, and remembered.
+                </p>
+                <div class="btn-group">
+                    <a href="#interactive-form" class="btn-primary">
+                        Start your book &rarr;
+                    </a>
+                    <button class="btn-secondary">
+                        See examples
+                    </button>
+                </div>
+                <div class="stats-group">
+                    <div class="stat-item">
+                        <h2 class="stat-number">500+</h2>
+                        <p class="stat-label">Minimnum Order</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-number">Full Service</h2>
+                        <p class="stat-label">Writing Illustration Print</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-number">6 Weeks</h2>
+                        <p class="stat-label">Average delivery</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://static.wixstatic.com/media/f96a40_b1a459c8829e438caf7bafbcff6223bb~mv2.png/v1/fill/w_527,h_561,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/P-hero.png"
+                    alt="Hero Book Visual" class="hero-img">
+            </div>
+        </section>
+
+        <header class="trusted-header">
+            <div>Trusted by brands building stories that stick</div>
+            <nav class="trusted-nav">
+                <span>ScoobGolf</span>
+                <span>Bloom & Sprout</span>
+                <span>tucked in.</span>
+                <span>Wildhaven</span>
+            </nav>
+        </header>
+
+        <section class="section-padding">
+            <p class="sub-title">How It Works</p>
+            <h2 class="section-title">From your idea to your customer's shelf.</h2>
+            <p class="section-desc" style="text-align: center;">Four steps, one team, no agency overhead. Concept,
+                craft, print, deliver.</p>
+            <div class="grid-4">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
+                            fill="none">
+                            <path
+                                d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4" />
+                        </svg>
+                    </div>
+                    <h3 class="step-h3">Concept & Story</h3>
+                    <p class="step-p">Tell us about your brand. We'll shape your idea into a story arc that fits the
+                        format.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
+                            fill="none">
+                            <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                        </svg>
+                    </div>
+                    <h3 class="step-h3">Design & Illustrate</h3>
+                    <p class="step-p">Custom illustration that brings your world to life. We send proofs every step
+                        of the way.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
+                            fill="none">
+                            <path
+                                d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z" />
+                        </svg>
+                    </div>
+                    <h3 class="step-h3">Print & Production</h3>
+                    <p class="step-p">Child-safe inks, durable boards, premium finish. Built to survive juice boxes
+                        and tiny hands.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
+                            fill="none">
+                            <path
+                                d="M14 18H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8M14 9h4l4 3v5h-8M7 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                        </svg>
+                    </div>
+                    <h3 class="step-h3">Bulk Delivery</h3>
+                    <p class="step-p">Direct to your warehouse, co-packer, or multiple retail locations seamlessly.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="interactive-form" class="form-section">
+            <div class="form-info">
+                <span class="sub-title" style="margin-bottom:0; text-align: left;">Start Your Book</span>
+                <h1 class="serif-font form-info-title">
+                    A guided start &mdash; <br>no gatekeeping calls.
+                </h1>
+                <p class="form-info-p">
+                    Answer our key design questions below. Click into any step to configure your project parameters.
+                    We send back a sample spread and quote within 3–5 business days — no pitch deck needed.
+                </p>
+                <ul class="bullets-list">
+                    <li class="bullet-item">
+                        <span class="bullet-check">✓</span>
+                        <span>Pick your production scale, scope, and target demographic</span>
+                    </li>
+                    <li class="bullet-item">
+                        <span class="bullet-check">✓</span>
+                        <span>Choose a stylistic tone that matches your brand guidelines</span>
+                    </li>
+                    <li class="bullet-item">
+                        <span class="bullet-check">✓</span>
+                        <span>Get a sample spread map and quote before paying anything</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="spreads-section">
+            <div class="spreads-header">
+                <div class="spreads-title-block">
+                    <span class="sub-title" style="margin-bottom:0;">Sample Spreads</span>
+                    <h2 class="serif-font" style="font-size: 36px; color:#111;">Stories we've brought to life.</h2>
+                    <p style="font-size: 14px; color:#575249;">A few sample spreads from recent projects &mdash;
+                        built around each brand's voice and audience.</p>
+                </div>
+                <div class="spreads-link-block">
+                    <a href="#" class="view-all-link">
+                        View all samples <span>→</span>
+                    </a>
+                </div>
+            </div>
+            <div class="grid-3">
+                <div class="img-card">
+                    <div class="img-wrapper">
+                        <img src="https://static.wixstatic.com/media/f96a40_a3d516d22b524e6bbf3fa99bb71f5d3e~mv2.jpeg/v1/fill/w_607,h_405,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_6787.jpeg"
+                            alt="Sample Book Spread 1">
+                    </div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper">
+                        <img src="https://static.wixstatic.com/media/f96a40_cdab1b3c6d08457f983230d37a848c17~mv2.jpeg/v1/fill/w_607,h_405,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_6669.jpeg"
+                            alt="Sample Book Spread 2">
+                    </div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper">
+                        <img src="https://static.wixstatic.com/media/f96a40_5bc7837bbc4e4787ae71b94b862cfcef~mv2.jpeg/v1/fill/w_607,h_405,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_6623.jpeg"
+                            alt="Sample Book Spread 3">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="process-container">
+                <div class="process-tag">Process</div>
+                <h1 class="process-title">Six stages, zero guesswork.</h1>
+                <p class="process-subtitle">Always know where your project stands.</p>
+
+                <div class="timeline-wrapper">
+                    <div class="timeline-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Quote Requested</h3>
+                        <p class="step-desc">Let us know the scope of your project</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Sample In Progress</h3>
+                        <p class="step-desc">We'll draft a spread tailored to your project</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Awaiting Approval</h3>
+                        <p class="step-desc">Review / Request changes</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Print Approved</h3>
+                        <p class="step-desc">Receive physical proof to approve</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">In Production</h3>
+                        <p class="step-desc">Refined bulk printing in about 2 weeks</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">6</div>
+                        <h3 class="step-title">Delivered</h3>
+                        <p class="step-desc">Bulk delivery to your door</p>
+                    </div>
+                </div>
+
+                <div class="phase-boxes-grid">
+                    <div class="phase-card">
+                        <div class="phase-num">Phase 1</div>
+                        <h4 class="phase-title-text">50% To Kick Off</h4>
+                        <p class="phase-desc-text">Unlocks sample spread and creative work.</p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-num">Phase 2</div>
+                        <h4 class="phase-title-text">Final 50% After Approval</h4>
+                        <p class="phase-desc-text">Production runs the moment payment clears.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="testimonial-container">
+            <div class="quote-icon">&rdquo;</div>
+            <blockquote class="testimonial-text">
+                Highly recommend as an added revenue stream. The process was simple, communication was
+                excellent, and the finished books exceeded our expectations.
+            </blockquote>
+            <div class="testimonial-author">
+                <span class="name">Morgan T.</span>
+                <span class="designation">Founder, ScoobGolf</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="cta-box">
+        <h1>Ready To Tell Your Story?</h1>
+        <p>Sixty seconds to start. Your next venture awaits.</p>
+        <a href="#" class="start-btn">Start your book &#8594;</a>
+    </div>
+    <footer class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col brand-col">
+                <div class="brand-header">
+                    <div class="logo-box">
+                        <span class="logo-text-top">PLAYFIELD</span>
+                        <span class="logo-text-bottom">BOOKS</span>
+                    </div>
+                    <h2 class="company-name">Playfield Book Company</h2>
+                </div>
+                <p class="location">Los Angeles, CA</p>
+                <p class="contact-info">
+                    805-669-6462<br>
+                    <a href="mailto:info@playfieldbooks.com">info@playfieldbooks.com</a>
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>SOCIALS</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>INQUIRIES</h3>
+                <p class="cta-text">Looking for a quote?</p>
+                <a href="#" class="cta-btn">Start your book &rarr;</a>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <div class="bottom-left">
+                <a href="#" class="privacy-link">Privacy Policy</a>
+            </div>
+            <div class="bottom-center">
+                <a href="#" class="back-to-top">Back to Top</a>
+            </div>
+            <div class="bottom-right">
+                <p>&copy; 2035 by Playfield Book Company</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
