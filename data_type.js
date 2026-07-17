@@ -34,4 +34,18 @@ const myfunction =  function(){
 
 } 
 
-console.log( typeof bignumber);
+// console.log( typeof bignumber);
+
+// *******************************
+// stack (primitive),heap (non primitive)
+
+
+let myyoutubename = "aliazhargmail.com"
+
+let anothername = myyoutubename
+console.log(anothername);
+
+let user = {
+    email: "user@google.com",
+    upi: "user@google.com"
+}
